@@ -1,0 +1,10 @@
+{
+  "id": "/",
+  "name": "Rent a Car CIPI",
+  "short_name": "CIPI",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f6f2",
+  "theme_color": "#101b32"
+}

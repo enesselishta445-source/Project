@@ -5,7 +5,7 @@ Website and administrator panel for the Gjilan, Kosovo car rental business. The 
 ## Requirements
 
 - Node.js 22.5 or newer (uses the built-in `node:sqlite` module).
-- No third-party application dependencies or build step.
+- Web Push uses the `web-push` package.
 - For a public production deployment: a persistent writable disk and HTTPS reverse proxy or hosting platform.
 
 ## Run locally
@@ -30,8 +30,17 @@ Alternatively, create an administrator interactively with `node scripts/create-a
 | `COOKIE_SECURE` | `false` | Set to `true` when HTTPS terminates in front of this server. |
 | `ADMIN_EMAIL` | unset | Optional first-run admin email. |
 | `ADMIN_PASSWORD` | unset | Optional first-run password; never commit it or leave it in the deployment environment after setup. |
+| `VAPID_PUBLIC_KEY` | unset | Public key for browser push notifications. |
+| `VAPID_PRIVATE_KEY` | unset | Private VAPID key; store only in the deployment environment. |
+| `VAPID_SUBJECT` | `mailto:rentacarcipi@gmail.com` | Contact identifier required by Web Push. |
 
 The database and uploaded files must be on persistent storage. This workspace includes the four real vehicles and compressed photos supplied by CIPI. New databases can load them once with `SEED_FLEET=true` on first start, or `node scripts/seed-fleet.mjs` after starting the server to create the database tables. Their unknown model years and fuel types stay marked as unspecified; the daily price displays as an enquiry until CIPI sets a price. For deployment, use a single app instance with SQLite on a persistent local volume, or migrate the data layer to a managed PostgreSQL service before scaling to multiple app instances. Terminate TLS at the host/reverse proxy, set `COOKIE_SECURE=true`, set `NODE_ENV=production`, restrict access to the database and uploads volume, and back up both volumes.
+
+## Phone notifications
+
+The admin overview can subscribe a device to Web Push and send a test notification. Generate a VAPID key pair locally with `npm run generate:vapid`, then configure `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `VAPID_SUBJECT` in the hosting provider's environment settings. Never commit or share the private key. Sign in to the admin panel from the device and choose **Aktivizo njoftimet**; each admin device must opt in separately.
+
+On iPhone/iPad, use iOS/iPadOS 16.4 or newer, add the site to the Home Screen, open it from that icon, and grant notification permission when prompted. A persistent database is required to retain device subscriptions and reservation records across service restarts; free Render instances do not provide persistent disk storage.
 
 ### Docker
 
@@ -55,6 +64,7 @@ The container exposes a health check at `/api/session`. Keep the Docker volume a
 - Administrator authentication, protected API routes, `HttpOnly`/`SameSite=Strict` sessions, CSRF tokens, password hashing with scrypt, and login throttling.
 - Vehicle create, edit, availability and featured controls, verified JPEG/PNG/WebP uploads (8 MB per file), and deletion.
 - Reservation search/status filters, conflict-checked confirmation, rejection/completion and deletion.
+- Web Push notifications for new reservation requests, with per-device admin subscriptions and a test action.
 - Customer directory with reservation history, statistics, six-month reservation chart, and editable Albanian website content.
 - Phone number and contact details can be edited in the admin dashboard and are displayed on the public contact page.
 - SQLite foreign keys and indexes, server-side validation, security headers, and automatic cleanup of unused uploaded images.
@@ -63,7 +73,7 @@ The container exposes a health check at `/api/session`. Keep the Docker volume a
 
 - Public: `GET /api/public/vehicles`, `GET /api/public/settings`, `GET /api/public/availability`, `POST /api/public/reservations`.
 - Session: `GET /api/session`, `POST /api/admin/login`, `POST /api/admin/logout`.
-- Protected admin: `/api/admin/overview`, `/vehicles`, `/uploads`, `/reservations`, `/customers`, and `/settings`.
+- Protected admin: `/api/admin/overview`, `/vehicles`, `/uploads`, `/reservations`, `/customers`, `/settings`, `/push-config`, `/push-subscriptions`, and `/push-test`.
 
 The server uses the standard Node HTTP API. There is no mock inventory; a new installation starts with an empty fleet and the actual business contact details prefilled.
 
