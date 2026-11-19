@@ -5,7 +5,9 @@ ENV NODE_ENV=production \
     DATABASE_PATH=/data/cipi.sqlite \
     UPLOAD_DIR=/data/uploads
 WORKDIR /app
-COPY --chown=node:node package.json server.mjs ./
+COPY --chown=node:node package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY --chown=node:node server.mjs ./
 COPY --chown=node:node lib ./lib
 COPY --chown=node:node public ./public
 COPY --chown=node:node scripts ./scripts
