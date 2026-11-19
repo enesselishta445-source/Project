@@ -1,0 +1,157 @@
+{
+  "vehicles": [
+    {
+      "id": 2,
+      "name": "A-Class · i bardhë",
+      "brand": "Mercedes-Benz",
+      "description": "Mercedes-Benz A-Class i bardhë. Hatchback kompakt me pamje elegante. Fotot tregojnë pjesën e përparme dhe kabinën. Viti, motorizimi dhe pajisjet specifike konfirmohen nga CIPI para rezervimit.",
+      "price_per_day": 0,
+      "year": 0,
+      "transmission": "Unknown",
+      "fuel": "Unknown",
+      "passengers": 5,
+      "category": "Kompakte premium",
+      "available": true,
+      "featured": true,
+      "created_at": "2026-11-17 20:25:55",
+      "updated_at": "2026-11-17 20:25:55",
+      "images": [
+        {
+          "id": 5,
+          "url": "/uploads/14b4b30693472098f673545d06999277.jpg",
+          "alt": "Mercedes-Benz A-Class i bardhë · pamje anësore"
+        },
+        {
+          "id": 6,
+          "url": "/uploads/df52ccd13450cf1cbea9bc5bfcae59ee.jpg",
+          "alt": "Mercedes-Benz A-Class · i bardhë · foto 1"
+        },
+        {
+          "id": 7,
+          "url": "/uploads/49be61773b7e481f158267fc0badd343.jpg",
+          "alt": "Mercedes-Benz A-Class · i bardhë · foto 2"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Golf 7 · i bardhë",
+      "brand": "Volkswagen",
+      "description": "Volkswagen Golf 7 i bardhë. Hatchback praktik për qytet dhe udhëtime. Fotot përfshijnë pamjen e jashtme dhe kabinën. Viti i prodhimit dhe karburanti nuk dallohen në fotografi; CIPI i konfirmon para rezervimit.",
+      "price_per_day": 0,
+      "year": 0,
+      "transmission": "Automatic",
+      "fuel": "Unknown",
+      "passengers": 5,
+      "category": "Ekonomike",
+      "available": true,
+      "featured": true,
+      "created_at": "2026-11-17 20:25:55",
+      "updated_at": "2026-11-17 20:25:55",
+      "images": [
+        {
+          "id": 1,
+          "url": "/uploads/8c8235e669a3ade4adf1c6482408ab01.jpg",
+          "alt": "Volkswagen Golf 7 · i bardhë · foto 1"
+        },
+        {
+          "id": 2,
+          "url": "/uploads/1617ed17acda8d641cfe8d614c2d4b74.jpg",
+          "alt": "Volkswagen Golf 7 · i bardhë · foto 2"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Golf Sportsvan · i bardhë",
+      "brand": "Volkswagen",
+      "description": "Volkswagen Golf Sportsvan i bardhë, me trup më të lartë dhe hapësirë praktike. Fotot paraqesin veturën dhe kabinën e saj. Viti i prodhimit dhe karburanti konfirmohen nga CIPI para rezervimit.",
+      "price_per_day": 0,
+      "year": 0,
+      "transmission": "Automatic",
+      "fuel": "Unknown",
+      "passengers": 5,
+      "category": "Familjare",
+      "available": true,
+      "featured": false,
+      "created_at": "2026-11-17 22:24:03",
+      "updated_at": "2026-11-17 22:24:03",
+      "images": [
+        {
+          "id": 3,
+          "url": "/uploads/28c663b205231fe99735632d18b935dc.jpg",
+          "alt": "Volkswagen Golf Sportsvan · i bardhë · foto 1"
+        },
+        {
+          "id": 4,
+          "url": "/uploads/0774f96b9bca418a883a0168d618151e.jpg",
+          "alt": "Volkswagen Golf Sportsvan · i bardhë · foto 2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Golf · blu",
+      "brand": "Volkswagen",
+      "description": "Volkswagen Golf me ngjyrë blu të errët. Fotografia paraqet disa kënde të jashtme. Viti, kambioja dhe motorizimi nuk dallohen në fotografi; CIPI i konfirmon para rezervimit.",
+      "price_per_day": 0,
+      "year": 0,
+      "transmission": "Unknown",
+      "fuel": "Unknown",
+      "passengers": 5,
+      "category": "Ekonomike",
+      "available": true,
+      "featured": false,
+      "created_at": "2026-11-17 20:25:55",
+      "updated_at": "2026-11-17 20:25:55",
+      "images": [
+        {
+          "id": 10,
+          "url": "/uploads/8988c5b7ac66caab29237ee0b6c08293.jpg",
+          "alt": "Volkswagen Golf · blu · foto 1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Golf · gri",
+      "brand": "Volkswagen",
+      "description": "Volkswagen Golf me ngjyrë gri, me pesë dyer. Fotot përfshijnë pamjen e jashtme dhe kabinën. Viti, kambioja dhe motorizimi nuk dallohen në fotografi; CIPI i konfirmon para rezervimit.",
+      "price_per_day": 0,
+      "year": 0,
+      "transmission": "Unknown",
+      "fuel": "Unknown",
+      "passengers": 5,
+      "category": "Ekonomike",
+      "available": true,
+      "featured": false,
+      "created_at": "2026-11-17 20:25:55",
+      "updated_at": "2026-11-17 20:25:55",
+      "images": [
+        {
+          "id": 8,
+          "url": "/uploads/4f5751509b3166151c73145305dafe6e.jpg",
+          "alt": "Volkswagen Golf · gri · foto 1"
+        },
+        {
+          "id": 9,
+          "url": "/uploads/ab211f5a59cb9275e5777d8f1a5c93b5.jpg",
+          "alt": "Volkswagen Golf · gri · foto 2"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "headline": "Gjilani ju pret. Rruga është e juaja.",
+    "description": "Zbuloni Kosovën me veturën e duhur. Rezervoni lehtë dhe nisuni me Rent a Car CIPI.",
+    "about": "Rent a Car CIPI SH.P.K. ju ndihmon të lëvizni me lehtësi dhe rehati. Jemi kompani vendore në Gjilan që nga viti 2020. Nga rezervimi i parë deri te kilometri i fundit, ekipi ynë është këtu për t’ju ndihmuar.",
+    "phone": "+383 44 850 815",
+    "email": "rentacarcipi@gmail.com",
+    "address": "Rr. Haki Myderizi, p.n., Gjilan, Kosovë",
+    "instagram": "https://www.instagram.com/rentacar_cipi/",
+    "facebook": "https://www.facebook.com/p/Rent-a-Car-CIPI-100064009811909/",
+    "company_name": "Rent a Car CIPI SH.P.K.",
+    "company_nui": "811479866",
+    "founded": "2020"
+  }
+}

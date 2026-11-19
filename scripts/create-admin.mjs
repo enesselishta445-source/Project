@@ -1,0 +1,11 @@
+try { process.loadEnvFile?.(); } catch {}
+import { DatabaseSync } from 'node:sqlite';
+import { mkdirSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { createInterface } from 'node:readline/promises';
+import { stdin, stdout } from 'node:process';
+import { hashPassword, validEmail, validPassword } from '../lib/security.mjs';
+const dbPath=resolve(process.env.DATABASE_PATH||'.data/cipi.sqlite'); mkdirSync(dirname(dbPath),{recursive:true});
+const db=new DatabaseSync(dbPath); db.exec(`CREATE TABLE IF NOT EXISTS admins(id INTEGER PRIMARY KEY,email TEXT NOT NULL UNIQUE,password_hash TEXT NOT NULL,created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)`);
+async function hiddenPassword(){if(!stdin.isTTY)throw new Error('Run setup from an interactive terminal so the password can be entered securely.');stdout.write('Admin password (12+ characters): ');stdin.setEncoding('utf8');stdin.setRawMode(true);stdin.resume();return await new Promise((resolvePassword,reject)=>{let value='';const onData=chunk=>{for(const c of chunk){if(c==='\u0003'){stdin.off('data',onData);stdin.setRawMode(false);stdout.write('\n');reject(new Error('Setup cancelled.'));return;}if(c==='\r'||c==='\n'){stdin.off('data',onData);stdin.setRawMode(false);stdout.write('\n');resolvePassword(value);return;}if(c==='\u007f'||c==='\b')value=value.slice(0,-1);else if(c>=' ')value+=c;}};stdin.on('data',onData);});}
+const cli=createInterface({input:stdin,output:stdout}); try { const email=(process.argv[2]||await cli.question('Admin email: ')).trim().toLowerCase();cli.close();const password=await hiddenPassword();if(!validEmail(email)||!validPassword(password))throw new Error('Use a valid email and a password of at least 12 characters.');if(process.argv.includes('--reset'))db.prepare('INSERT INTO admins(email,password_hash) VALUES (?,?) ON CONFLICT(email) DO UPDATE SET password_hash=excluded.password_hash').run(email,await hashPassword(password));else db.prepare('INSERT INTO admins(email,password_hash) VALUES (?,?)').run(email,await hashPassword(password));console.log(`Administrator ${email} ${process.argv.includes('--reset')?'updated':'created'}.`); } catch(e) { console.error(e.message); process.exitCode=1; } finally { cli.close(); db.close(); }
